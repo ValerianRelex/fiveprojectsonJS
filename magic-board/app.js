@@ -1,6 +1,6 @@
 const board = document.querySelector('#board');
 const colors = ['red', 'pink', 'blue', 'purple', 'gray', 'white', 'orange', 'green'];
-const SQUARE_NUMBER = 850;
+const SQUARE_NUMBER = 870;
 
 for (let i = 0; i < SQUARE_NUMBER; i++) {
     const square = document.createElement('div');
@@ -8,7 +8,7 @@ for (let i = 0; i < SQUARE_NUMBER; i++) {
 
     square.addEventListener('mouseover', () => setColor(square));
 
-    square.addEventListener('mouseleave', () => removeColor(square));
+    square.addEventListener('mouseleave', removeColor); 
 
     board.append(square);
 }
@@ -19,12 +19,12 @@ function setColor(element) {
     element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
 }
 
-function removeColor(element) {
+function removeColor(event) {
+    const element = event.target;
     element.style.backgroundColor = '#ffdd';
     element.style.boxShadow = `0 0 2px #ffdd`;
 }
 
 function getRandomColor() {
-    const index = Math.floor(Math.random() * colors.length);
-    return colors[index];
+    return colors[Math.floor(Math.random() * colors.length)];
 }
