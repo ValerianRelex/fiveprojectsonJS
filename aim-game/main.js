@@ -2,8 +2,25 @@ const btnStart = document.querySelector('#start');
 const screens = document.querySelectorAll('.screen');
 const timeList = document.querySelector('#time-list');
 const timeElement = document.querySelector('#time');
+
+const liLast = document.createElement('li');
+
 // const board = document.querySelector('.board');
 let score = 0;
+let sec = 40; // значение, для четвертой кнопки задается здесь
+
+//  создадим еще одну кнопку программно
+let newButton = document.createElement('button');
+newButton.className = 'time-btn';
+newButton.innerText = `${sec} сек`;
+newButton.setAttribute('time-value', sec);
+
+liLast.insertAdjacentElement('afterbegin', newButton);
+
+timeList.appendChild(liLast);
+
+// newButton.innerHTML = '<li></li>';
+// liTags[liTags.length-1].insertBefore(newButton, liTags[2]);
 
 btnStart.addEventListener('click', (event) => {
     event.preventDefault(); // отменим действие по умолчанию
@@ -59,6 +76,7 @@ function createRandomCircle() {
     const size = getRandomNumber(14, 64);
     const locX = getRandomNumber(0, 500 - size);
     const locY = getRandomNumber(0, 500 - size);
+    const color = getRandomNumber(1000, 644644);
 
     circle.classList.add('circle');
     circle.style.cssText = `
@@ -66,7 +84,7 @@ function createRandomCircle() {
         height: ${size}px;    
         top: ${locX}px;    
         left: ${locY}px;    
-            
+        background: #${color};
     `;
 
     board.append(circle); // работает и без добавления константы, и ее инициализации с помощью DOM метода .querySelector('.board');
@@ -80,6 +98,6 @@ function finishGame() {
     timeElement.parentElement.classList.add('hide'); // этот вариант - более эстетичен, нет скачка окна
     // timeElement.parentElement.remove(); //
     board.innerHTML = `
-    <h1> Ваш счет = <span class="primray">${score} </span> </h1>
+    <h1> Ваш счет = <span class="primary">${score} </span> </h1>
     `;
 }
