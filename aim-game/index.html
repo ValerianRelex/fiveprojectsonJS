@@ -11,29 +11,30 @@
     <div class="screen">
       <h1>Aim Training</h1>
 
-      <a href="#" class="start">Начать игру</a>
+      <!-- классы для стилизации обьектов DOM, ID - для работы с данными в JS -->
+      <a href="#" class="start" id="start">Начать игру</a>
 
     </div>
 
     <div class="screen">
       <h1>Выберите время</h1>
 
-      <ul class="time-list">
+      <ul class="time-list" id="time-list">
 
         <li>
-          <button class="time-btn">
+          <button class="time-btn" time-value="10">
             10 сек
           </button>
         </li>
 
         <li>
-          <button class="time-btn">
+          <button class="time-btn" time-value="20">
             20 сек
           </button>
         </li>
 
         <li>
-          <button class="time-btn">
+          <button class="time-btn" time-value="30">
             30 сек
           </button>
         </li>
@@ -45,7 +46,8 @@
     <div class="screen">
       <h3>Осталось <span id="time">00:00</span></h3>
 
-      <div class="board" id="board"></div>
+      <!-- доска для игры, сюда нужно будет поместить созданный с помощью JS элемент -->
+      <div class="board" id="board"></div> 
 
     </div>
 
